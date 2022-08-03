@@ -7,7 +7,7 @@ import retrofit2.http.GET;
 
 public interface Api_Interface {
 
-    @GET("/get")
+    @GET("get")
     Call<List<Posts>> getPosts();
 }
 

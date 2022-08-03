@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
@@ -31,7 +33,11 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tvProductname.setText(postsList.get(position).getProduct_name());
         holder.tvProducttype.setText(postsList.get(position).getProduct_type());
-        //holder.tvImage.setImageIcon(postsList.get(position).getImage());
+        //holder.tvImage.setText(postsList.get(position).getImage());
+        if(!postsList.get(position).getImage().isEmpty())
+            Picasso.with(holder.tvImage.getContext()).load(postsList.get(position).getImage());
+        else
+            Picasso.with(holder.tvImage.getContext()).load(R.drawable.ic_launcher_foreground);
         holder.tvTax.setText(postsList.get(position).getTax());
         holder.tvPrice.setText(postsList.get(position).getPrice());
 
